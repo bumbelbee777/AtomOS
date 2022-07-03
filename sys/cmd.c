@@ -22,7 +22,7 @@ void ls_path(char *path)
 int main(int argc, char **argv)
 {
 	cbuffer = malloc(2048);
-	printf("Atom cmd [Version 1.0.0]\nCopyright (c) 2022 Lightning-Speed.  All rights reserved.\n\nType help for commands\n");
+	printf("Atom cmd [Version 1.0.0]\nCopyright (c) 2022 Lightning-Speed.  All rights reserved.\n\nType help for a list of commands\n");
 	set_screen(0, 0x0f);
 	putchar('\n');
 	while (1)
@@ -86,6 +86,18 @@ int main(int argc, char **argv)
 				fnode *dirf = (fnode *)fopen(cbuffer + strlen(cbuffer) + 1, "w");
 				dirf->type = dir;
 			}
+
+			else if (!strcmp(cbuffer, "help"))
+			{
+				printf("Atom version 1.1.2");
+				printf("ls		-		list directories");
+				printf("mkdir	-		create new directory");
+				printf("cls		-		clear screen");
+				printf("time	-		get current time");
+				printf("date	-		get current date");
+				printf("exit	-		exit atom shell");
+			}
+
 			else if (res == 0)
 			{
 				printf("%s%s\n", "command not found: ", cbuffer);
